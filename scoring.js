@@ -64,6 +64,31 @@ function get_pass_or_failure() {
   return judge;
 };
 
+
+
+ // 各教科の点数を取得し、取得した点数から「合格、不合格」の判断を下すロジックを作ります。
+ function get_pass_or_failure() {
+  let subject_points = 
+  [Number($('#national_language').val()),
+  Number($('#english').val()),
+  Number($('#mathematics').val()),
+  Number($('#science').val()),
+  Number($('#society').val())
+  ];
+  // 変数「number」に入力した教科の数を代入します。
+  let number = subject_points.length;
+  // 変数「judge」に"合格"を代入しておきます。
+  let judge = "合格";
+  // 入力したそれぞれの教科のうち、1つでも60点よりも低い点数があった場合、変数「judge」に"不合格"を再代入する処理を記述する。
+  for(let i = 0; i < number;i++){
+    if(subject_points[i] < 60 ){
+       judge = "不合格"; break;
+    }
+  }
+  // ヒント：配列の繰り返し処理について調べてみましょう。
+  return judge;
+};
+
  // 最終的なジャッジのロジックを作ります。
  function judgement() {
   // 変数「achievement」に「get_achievement()の戻り値」を代入します。
